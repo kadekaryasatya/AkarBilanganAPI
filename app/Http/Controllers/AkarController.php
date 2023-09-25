@@ -23,7 +23,8 @@ class AkarController extends Controller
         $waktuPemrosesanAwal = microtime(true);
         $akar = sqrt($bilangan);
         $waktuPemrosesanAkhir = microtime(true);
-        $waktuPemrosesan = round(($waktuPemrosesanAkhir - $waktuPemrosesanAwal) * 1000, 3); // Waktu dalam milidetik dengan tiga desimal
+        $waktuPemrosesan = round(($waktuPemrosesanAkhir - $waktuPemrosesanAwal) * 1000, 6); // Waktu dalam milidetik dengan 6 desimal
+        $waktuPemrosesan = number_format($waktuPemrosesan, 6, '.', ''); // Format bilangan desimal
 
         // Simpan ke database
         $akarBilangan = new AkarBilangan();
