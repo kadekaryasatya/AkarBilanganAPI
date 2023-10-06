@@ -12,7 +12,7 @@ class AkarController extends Controller
     {
         // Validasi input dari pengguna
         $validator = Validator::make($request->all(), [
-            'bilangan' => 'required|numeric|min:0',
+            'bilangan' => 'required|numeric|min:1',
         ]);
         
         if ($validator->fails()) {
