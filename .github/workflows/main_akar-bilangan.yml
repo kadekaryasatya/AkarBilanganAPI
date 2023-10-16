@@ -62,5 +62,5 @@ jobs:
         with:
           app-name: 'akar-bilangan'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_49FC968FD0F64B56922F36F7DCF0CFA0 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EF5C0750A3E04DE59900AF3B7411D513 }}
           package: .
