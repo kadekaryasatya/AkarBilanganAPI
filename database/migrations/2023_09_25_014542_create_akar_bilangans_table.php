@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('akar_bilangans', function (Blueprint $table) {
             $table->id();
-            $table->float('bilangan');
-            $table->float('akar');
-            $table->float('waktu_pemrosesan');
+            $table->bigInteger('bilangan');
+            $table->double('akar');
+            $table->double('waktu_pemrosesan');
             $table->timestamps();
         });
     }
