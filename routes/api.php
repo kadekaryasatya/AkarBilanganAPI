@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,5 @@ Route::post('/hitung-akar', [App\Http\Controllers\AkarController::class, 'hitung
 
 Route::get('/get-all-data', [App\Http\Controllers\AkarController::class, 'getAllData']);
 
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/get-all-users', [AuthController::class, 'getAllData']);

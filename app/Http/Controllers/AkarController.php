@@ -14,17 +14,17 @@ class AkarController extends Controller
         $validator = Validator::make($request->all(), [
             'bilangan' => 'required|numeric|min:0',
         ]);
-        
+
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
         }
-        
+
         $bilangan = $request->input('bilangan');
         $waktuPemrosesanAwal = microtime(true);
-        
+
         // Inisialisasi $kuadrat_manual
         $hasil_kuadrat = 0;
-        
+
         if ($bilangan > 0) {
             // Perhitungan manual akar kuadrat
             $estimasi = $bilangan / 2;
@@ -37,24 +37,24 @@ class AkarController extends Controller
                 $estimasi = $estimasi_baru;
             }
         }
-        
+
         $waktuPemrosesanAkhir = microtime(true);
         $waktuPemrosesan = round(($waktuPemrosesanAkhir - $waktuPemrosesanAwal) * 1000, 6); // Waktu dalam milidetik dengan 6 desimal
         $waktuPemrosesan = number_format($waktuPemrosesan, 6, '.', ''); // Format bilangan desimal
-        
+
         // Simpan ke database
         $akarBilangan = new AkarBilangan();
         $akarBilangan->bilangan = $bilangan;
         $akarBilangan->akar =  $hasil_kuadrat;
         $akarBilangan->waktu_pemrosesan = $waktuPemrosesan;
         $akarBilangan->save();
-        
-        return response()->json([   
+
+        return response()->json([
             'bilangan' => $bilangan,
             'akar' => $hasil_kuadrat,
             'waktu_pemrosesan' => $waktuPemrosesan,
         ]);
-        
+
     }
 
     public function getAllData()
