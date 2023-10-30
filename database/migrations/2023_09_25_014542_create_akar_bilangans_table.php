@@ -16,6 +16,9 @@ return new class extends Migration
             $table->bigInteger('bilangan');
             $table->double('akar');
             $table->double('waktu_pemrosesan');
+            $table->bigInteger("user_id")->unsigned();
+
+            $table->foreign('user_id')->references('id')->on("users")->onDelete("cascade");
             $table->timestamps();
         });
     }

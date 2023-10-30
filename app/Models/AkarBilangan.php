@@ -9,5 +9,9 @@ class AkarBilangan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['bilangan', 'akar', 'waktu_pemrosesan'];
+    protected $fillable = ['bilangan', 'akar', 'waktu_pemrosesan', 'user_id'];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

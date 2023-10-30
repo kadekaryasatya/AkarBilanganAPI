@@ -41,4 +41,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function akarBilangan() {
+        return $this->hasMany(AkarBilangan::class);
+    }
 }
