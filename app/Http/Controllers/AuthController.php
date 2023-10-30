@@ -30,6 +30,7 @@ class AuthController extends Controller
 
         $success['token'] = $user->createToken('auth_token')->plainTextToken;
         $success['nim'] = $user->nim;
+        $success['id'] = $user->id;
 
         return response()->json([
             'success' => true,
@@ -43,6 +44,7 @@ class AuthController extends Controller
             $auth = Auth::user();
             $success['token'] = $auth->createToken('auth_token')->plainTextToken;
             $success['nim'] = $auth->nim;
+            $success['id'] = $auth->id;
 
             return response()->json([
                 'success' => true,
@@ -50,7 +52,7 @@ class AuthController extends Controller
                 'data' => $success
             ]);
         }else{
-            $this->register($request);
+            return $this->register($request);
         }
     }
 

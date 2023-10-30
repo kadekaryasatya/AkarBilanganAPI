@@ -14,7 +14,7 @@ class AkarController extends Controller
         $validator = Validator::make($request->all(), [
             'bilangan' => 'required|numeric|min:0',
         ]);
-
+        $id = auth()->user()->id;
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
         }
@@ -47,6 +47,7 @@ class AkarController extends Controller
         $akarBilangan->bilangan = $bilangan;
         $akarBilangan->akar =  $hasil_kuadrat;
         $akarBilangan->waktu_pemrosesan = $waktuPemrosesan;
+        $akarBilangan->user_id = $id;
         $akarBilangan->save();
 
         return response()->json([
